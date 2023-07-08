@@ -47,7 +47,7 @@ Latest external converter file available:
 >`external_converters:` <br />
 > `- ZNQBKG39LM.js`<br />
 > `- ZNQBKG40LM.js`
-- This example at both converter file
+  - This example are using two converter files
 4. Re-start z2m. Check logs to see if z2m start successfully
 5. Add z1 device as normal
 
