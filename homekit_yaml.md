@@ -4,7 +4,7 @@ This guide written in Chinese, target for Hong Kong newbies
 Changlog
 20230708 - Initial github version
 
-###### 先講廢話
+## 先講廢話
 其實點解有 Integration 唔用, 要用 yaml 去設定? ~~主要因為 HA 廢 :D~~
 - Expose 出去既 Entities 如果其中一隻有事, 佢會炒左成個 Subsystem, 睇 Log 唔容易搵到
 - 當你有好多 Entities 時, 你在 HomeKit Integration 要 Include 個 drop down list, 可以長蛇春咁長
@@ -19,7 +19,7 @@ https://www.home-assistant.io/integrations/homekit/
 
 <br/>
 
-0. 強調建議先安裝 Studio Code Server 呢個 Add-on卜. 佢可以令你在 Browser 直接修改 File, 日後非常方便
+0. 強烈建議使用 Studio Code Server 呢個 Add-on. 咁你喺 Browser 直接修改 File 就 Apply Change, 日後非常方便
 > 如果未裝, 你可以在 Settings -> Add-Ons -> Home Assistant Community Add-ons 搵到 
 ![addons](https://github.com/jomud9/homeassistant_howto/blob/2fabe48e35cf15868b732a85c16f21bcc558b43b/images/homekit_yaml_01.jpg)
 
@@ -38,7 +38,7 @@ homekit: !include homekit.yaml
   filter:
     include_entities:
       #大廳
-      - light.spotlights
+      - input_boolean.ventmode1
       - switch.switchz1_livingroom_button_3
       - fan.zhimi_fb1_fcce_fan
 
@@ -49,8 +49,8 @@ homekit: !include homekit.yaml
 
   entity_config:
     #大廳
-    light.spotlights:
-      name: 射燈
+    input_boolean.ventmode1:
+      name: 大廳通風
     switch.switchz1_livingroom_button_3:
       name: 窗邊燈帶
     fan.zhimi_fb1_fcce_fan:
@@ -93,5 +93,16 @@ homekit: !include homekit.yaml
     - 加 # 號 Disable 所有在 include entities 果 part 既 entity, 再去 Restart Homekit yaml, 睇下見到隻Bridge後, 再 add 番 HA expose 的 bridge. 再以同方式去一行一行咁移除 * 號
 
 <br/>
+
+## FAQ
+1. 如果不到 150 Device, 請不要開 Multiple Instances. 一來食多左 Resource, 二來如果有 Bad Entity 炒 HomeKit Subsystem, 所有 HomeKit Bridge 都係會炒晒
+2. HomeKit 對某D Entity 有限制, 未必所有 HA 既 Entity 都可以 Expose 去到 HomeKit. 詳見 Reference
+3. 入左 HA 既 WebCam, 理論上都可以用呢個方法入 HomeKit, 但想效果好, 不如用 Scrypted. https://github.com/koush/scrypted/wiki/Installation:-Home-Assistant-OS
+4. 想用 HomeKit 叫番 HA 行 Automation, 最簡單既方法, 係
+   - 用 HA Helper 度, create 個 input_boolean
+     https://www.home-assistant.io/integrations/input_boolean/
+   - expose 佢去 HomeKit
+   - 在你的 HA Automation / Nodered 去 check 呢個 entity as trigger
+   
 
 ### 希望幫到你. ^__^
