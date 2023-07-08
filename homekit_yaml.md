@@ -31,7 +31,7 @@ homekit: !include homekit.yaml
 ```
 <br/>
 
-2. 建立 /config/homekit.yaml, 為左方便大家、你可以 Copy and Paste 下面幾行, 再自己改
+2. 建立 /config/homekit.yaml. 為左方便大家, 你可以 Copy and Paste 下面幾行, 再自己改
 ```shell
 - name: HA Bridge
   mode: bridge
@@ -99,7 +99,7 @@ homekit: !include homekit.yaml
 2. HomeKit 對某D Entity 有限制, 未必所有 HA 既 Entity 都可以 Expose 去到 HomeKit. 詳見 Reference
 3. 入左 HA 既 WebCam, 理論上都可以用呢個方法入 HomeKit, 但想效果好, 不如用 Scrypted. https://github.com/koush/scrypted/wiki/Installation:-Home-Assistant-OS
 4. 想用 HomeKit 叫番 HA 行 Automation, 最簡單既方法, 係
-   - 用 HA Helper 度, create 個 input_boolean
+   - 用 HA Helper, create 個 input_boolean
      https://www.home-assistant.io/integrations/input_boolean/
    - expose 佢去 HomeKit
    - 在你的 HA Automation / Nodered 去 check 呢個 entity as trigger
