@@ -42,7 +42,7 @@ Latest external converter file available:
 
 ### Installation Step
 1. Stop z2m
-2. put related converter file ![Alt text](<IMAGE 2023-07-08 18:40:23.jpg>) under /config/zigbee2mqtt/
+2. put related converter file ![editorview](https://github.com/jomud9/homeassistant_howto/blob/6c6516224cf0db91af668bd7a082920f0be3cd32/images/z1/z1_add_to_z2m.jpg) under /config/zigbee2mqtt/
 3. Add the following section at /config/zigbee2mqtt/configuration.yaml
 >`external_converters:` <br />
 > `- ZNQBKG39LM.js`<br />
