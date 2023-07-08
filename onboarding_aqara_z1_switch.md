@@ -45,9 +45,9 @@ Latest external converter file available:
 1. Stop z2m
 2. put related converter file ![editorview](https://github.com/jomud9/homeassistant_howto/blob/6c6516224cf0db91af668bd7a082920f0be3cd32/images/z1/z1_add_to_z2m.jpg) under /config/zigbee2mqtt/
 3. Add the following section at /config/zigbee2mqtt/configuration.yaml
->`external_converters:` <br />
-> `- ZNQBKG39LM.js`<br />
-> `- ZNQBKG40LM.js`
+> external_converters: <br />
+> \- ZNQBKG39LM.js <br />
+> \- ZNQBKG40LM.js <br />
   - This example are using two converter files
 4. Re-start z2m. Check logs to see if z2m start successfully
 5. Add z1 device as normal
