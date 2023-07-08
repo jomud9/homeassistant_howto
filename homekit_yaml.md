@@ -83,6 +83,8 @@ homekit: !include homekit.yaml
    
    如果無反應, 就要在 iOS 果邊 Force Quit Home.app 一次，咁遁睇到更新既 Entity
 
+<br/>
+
 4. 在極端情況下, 發覺都係改完無野睇. 你可以試試
     - 先 Check HA Logs file
     - Reboot Home Assistant 一次 <br/>
