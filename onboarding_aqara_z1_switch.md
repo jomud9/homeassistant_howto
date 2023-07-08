@@ -1,13 +1,14 @@
 ## My journey with Aqara Z1 Smart Wall Switch
 
 - 路人 JM9, Jun 2023
+<br />
+
+###### Changlog
+###### 20230708: Draft for related file to allow z1 to be added into z2m
 
 <br />
 <br />
-<br />
 
-Changlog
-20230708 Draft for related file to allow z1 to be added into z2m
 
 ## Basic Information
 First heard from https://homekitnews.com/2023/05/23/aqara-reveal-new-strip-ceiling-light-curtain-motor-and-switches at around May 2023, and I received mine (2 gang) at around Jun 21 thru Taobao.
