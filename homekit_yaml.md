@@ -79,4 +79,15 @@ homekit: !include homekit.yaml
 
    或 
 
-   單純 Restart HomeKit YAML, 約10－15秒後 Home.app 就會更新 或者 要Force Quit 一次就睇到更新既 Entity
+   單純 Restart HomeKit YAML, 約10－15秒後 Home.app 就會更新 
+   
+   如果無反應, 就要在 iOS 果邊 Force Quit Home.app 一次，咁遁睇到更新既 Entity
+
+4. 在極端情況下, 發覺都係改完無野睇. 你可以試試
+    - 先 Check HA Logs file
+    - Reboot Home Assistant 一次 <br/>
+    ![reboot](https://github.com/jomud9/homeassistant_howto/blob/3d5a9ba7a9e362f0ddc8f89b2c4f3d2fa09eb05c/images/ha_reboot.jpg)
+    - 在 Home.app 度 Remove HA expose 的 Bridge 再加番
+    - 加 # 號 Disable 所有在 include entities 果 part 既 entity, 再去 Restart Homekit yaml, 睇下見到隻Bridge後, 再 add 番 HA expose 的 bridge. 再以同方式去一行一行咁移除 * 號
+
+希望幫到你. 
