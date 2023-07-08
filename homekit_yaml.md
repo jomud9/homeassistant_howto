@@ -11,4 +11,4 @@ This guide written in Chinese, target for Hong Kong newbies
 ## 點攪?
 
 0. 強調建議先安裝 Studio Code Server 呢個 Add-on (在 Settings -> Add-Ons -> Home Assistant Community Add-ons ) 
-!(/images/homekit_yaml_01.jpg)
+![addons](https://github.com/jomud9/homeassistant_howto/blob/2fabe48e35cf15868b732a85c16f21bcc558b43b/images/homekit_yaml_01.jpg)
