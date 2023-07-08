@@ -17,3 +17,6 @@ Just collective notes for setting up my HA related stuffs
       > ls /dev/tty* | grep usb
    - Command line
       > python3 cc2538-bsl.py -ewv -p /dev/tty.usbserial-0001 --bootloader-sonoff-usb ./CC1352P2_CC2652P_launchpad_coordinator_20220219.hex
+
+3. About Aqara Z1 Smart Wall Switch and pair with zigbee2mqtt 
+   https://github.com/jomud9/homeassistant_howto/blob/main/onboarding_aqara_z1_switch.md
