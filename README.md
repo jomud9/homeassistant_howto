@@ -2,10 +2,12 @@
 
 Just collective notes for setting up my HA related stuffs
 
-1. Note for Smart Switch and some tips before decoration work starts
+#### 1. Note for Smart Switch and some tips before decoration work starts
    https://github.com/jomud9/homeassistant_howto/blob/main/groundwork_tips.md
+   
+<br/>
 
-2. How to update Sonoff Zigbee 3.0 (ZBDongle-P) USB firmware using a Mac
+#### 2. How to update Sonoff Zigbee 3.0 (ZBDongle-P) USB firmware using a Mac
    https://vandalen.dev/post/how-to-update-sonoff-zigbee-3-0-zbdongle-p-usb-firmware-using-a-mac/
    - Install Python requirements
       > pip3 install pyserial intelhex
@@ -17,6 +19,13 @@ Just collective notes for setting up my HA related stuffs
       > ls /dev/tty* | grep usb
    - Command line
       > python3 cc2538-bsl.py -ewv -p /dev/tty.usbserial-0001 --bootloader-sonoff-usb ./CC1352P2_CC2652P_launchpad_coordinator_20220219.hex
+   
+<br/>
 
-3. About Aqara Z1 Smart Wall Switch and pair with zigbee2mqtt 
+#### 3. About Aqara Z1 Smart Wall Switch and pair with zigbee2mqtt 
    https://github.com/jomud9/homeassistant_howto/blob/main/onboarding_aqara_z1_switch.md
+   
+<br/>
+
+#### 4. Home Assistant to expose entity to HomeKit via yaml (in Chinese 廣東話)
+   https://github.com/jomud9/homeassistant_howto/blob/main/homekit_yaml.md
