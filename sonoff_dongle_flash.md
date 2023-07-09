@@ -30,3 +30,5 @@ It is originally from Smart Home Scene https://smarthomescene.com/guides/how-to-
 I did not have very good experience with newer NCP version but the flasher allow you to flash between NCP/RCP and custom firmware, it is a better means for you.
 
 Please read the page carefully. 
+
+![flasher](https://github.com/jomud9/homeassistant_howto/blob/2ecd3083ce6cee8ef2280150d9054bc3f9bbae7e/images/firmwareflasher.jpg)
