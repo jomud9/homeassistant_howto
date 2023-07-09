@@ -8,7 +8,7 @@ Just collective notes for setting up my HA related stuffs
 <br/>
 
 #### 2. Tips for flashing new firmware to Sonoff Dongle-P and Dongle-E without opening the case
-   https://github.com/jomud9/homeassistant_howto/blob/main/sonoffdongle_flash.md
+   https://github.com/jomud9/homeassistant_howto/blob/main/sonoff_dongle_flash.md
 
 <br/>
 
