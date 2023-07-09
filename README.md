@@ -7,8 +7,9 @@ Just collective notes for setting up my HA related stuffs
    
 <br/>
 
-#### 2. How to update Sonoff Zigbee 3.0 (ZBDongle-P) USB firmware using a Mac
+#### 2. Tips for flashing new firmware to Sonoff Dongle-P and Dongle-E without opening the case
    https://github.com/jomud9/homeassistant_howto/blob/main/sonoffdongle_flash.md
+
 <br/>
 
 #### 3. About Aqara Z1 Smart Wall Switch and pair with zigbee2mqtt 
