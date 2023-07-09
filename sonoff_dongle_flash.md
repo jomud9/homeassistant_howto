@@ -1,4 +1,4 @@
-### How to update Sonoff Zigbee 3.0 (ZBDongle-P) USB firmware using a Mac
+## How to update Sonoff Zigbee 3.0 (ZBDongle-P) USB firmware using a Mac
 It is via python to flash related firmware without open case
    https://vandalen.dev/post/how-to-update-sonoff-zigbee-3-0-zbdongle-p-usb-firmware-using-a-mac/
    - Install Python requirements
@@ -19,8 +19,9 @@ It is via python to flash related firmware without open case
       ```shell
       python3 cc2538-bsl.py -ewv -p /dev/tty.usbserial-0001 --bootloader-sonoff-usb ./CC1352P2_CC2652P_launchpad_coordinator_20220219.hex
       ```
+<br />
 
-### How to update Sonoff Zigbee 3.0 (ZBDongle-E) Firmware from web flasher
+## How to update Sonoff Zigbee 3.0 (ZBDongle-E) Firmware from web flasher
 It is originally from Smart Home Scene https://smarthomescene.com/guides/how-to-enable-thread-and-matter-support-on-sonoff-zbdongle-e/
 
 >Since the Sonoff ZBDongle-E is based on the EFR32MG21 Multiprotocol SoC chip, it’s capable of both Zigbee and Thread communication thanks to the radio of the module. However, this device is sold solely as a Zigbee dongle by the company and there is no official Thread support at the moment. Whether Sonoff intends to push an update making the device act as a Thread Border Router is unknown at this moment.
