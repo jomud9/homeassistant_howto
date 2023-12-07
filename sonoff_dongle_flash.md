@@ -21,6 +21,11 @@ It is via python to flash related firmware without open case
       ```
 <br />
 
+Firmware could be obtained from this location
+```shell
+https://github.com/Koenkk/Z-Stack-firmware/tree/master/coordinator/Z-Stack_3.x.0/bin
+```
+
 ## How to update Sonoff Zigbee 3.0 (ZBDongle-E) Firmware from web flasher
 It is originally from Smart Home Scene https://smarthomescene.com/guides/how-to-enable-thread-and-matter-support-on-sonoff-zbdongle-e/
 
