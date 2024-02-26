@@ -19,3 +19,8 @@ Just collective notes for setting up my HA related stuffs
 
 #### 4. Home Assistant to expose entity to HomeKit via yaml (in Chinese 廣東話)
    https://github.com/jomud9/homeassistant_howto/blob/main/homekit_yaml.md
+
+<br/>
+
+#### 5. Miot Auto Customize via yaml (in Chinese 廣東話)
+   https://github.com/jomud9/homeassistant_howto/blob/main/hacs_miotauto_yaml.md
