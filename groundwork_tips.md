@@ -4,6 +4,19 @@
 - 路人 JM9, Jun 2023
 
 <br />
+Jun 2026 更新: 
+1. Aqara 器材有區鎖 
+- 大陸國內的器材，在香港上網啟動時，就算你是用內地的 Aqara Home 戶口也會不能Activate
+- 有稱你可以在 Aqara Home "申請" 變更服務歸屬地, 1－3個工作日後完成審核就可以用得
+- 香港賣的 "港版" 所以唔駛咁煩, 但一般價錢大約貴三倍，而且支持器材少太多
+2. Matter 器材比 2023 年普及
+- 當然也因為有專利所以價錢也貴多少少.
+- 比較下如果在沒用 Home Assistant 的情況, 佢也是一個令你可以打破牌子間既界限既一個方法
+- Matter 器材本身也有 "Profiles", 因此雖然該器材在自家平台有10個功能, 去到 Matter "互通" 時功能可能會比自家支援的更少
+- Matter 器材本物有分用唔同方式係亙連. 但常見有:
+  - over WiFi: 就用 WiFi, Router 要支持 mDNS
+  - over Thread: 就用 Thread Network 去 Mesh (似 Zigbee, 要用有關既 Hub 如 Apple HomePod Mini)
+  - 呢個網都有好多Device既參考資料 https://matterdevices.io/
 <br />
 <br />
 
