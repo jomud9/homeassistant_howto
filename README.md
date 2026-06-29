@@ -28,5 +28,5 @@ Just collective notes for setting up my HA related stuffs
 <br/>
 
 #### 6. Ubiquiti UniFi VLAN and Zone Firewall Configration (in Chinese 廣東話)
-   https://github.com/jomud9/homeassistant_howto/blob/main/unifi_vlanzfw_config.md
+   https://github.com/jomud9/homeassistant_howto/blob/main/unifi_vlanzbf_config.md
 
