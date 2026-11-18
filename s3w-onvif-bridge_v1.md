@@ -395,22 +395,20 @@ systemctl enable --now mediamtx.service onvif-bridge.service
 
 1. **Verify generated config, services, ports, and snapshot endpoint:**
 
-   `cat /opt/mediamtx.yml`
-    
-   `systemctl status mediamtx.service onvif-bridge.service --no-pager`
-   
-   `ss -tlnp | grep -E '8000|8554'`
-   
-   `curl -sI http://127.0.0.1:8000/snapshot.jpg | head -n 4`
-   
+   ```bash
+   cat /opt/mediamtx.yml
+   systemctl status mediamtx.service onvif-bridge.service --no-pager
+   ss -tlnp | grep -E '8000|8554'
+   curl -sI http://127.0.0.1:8000/snapshot.jpg | head -n 4
+   ```
    Confirm `/opt/mediamtx.yml` was auto-generated from `/etc/onvif_bridge.conf`, both services show `active (running)`, ports `8000` and `8554` are listening, and `/snapshot.jpg` returns `HTTP/1.0 200 OK` with `Content-Type: image/jpeg`.
 
-2. **Adopt in UniFi Protect:**
+3. **Adopt in UniFi Protect:**
    * Open **UniFi Protect > Devices > Add Device** (or **Advanced Adoption**).
    * Adopt **`10.15.30.242:8000`** with `username` (`sonoff`) and `password` (`camfeed`).
    * Verify both **HQ** (`2304x1296`) and **Low** (`640x360`) streams play cleanly.
 
-3. **Future Configuration Changes:**
+4. **Future Configuration Changes:**
    * **Edited `/etc/onvif_bridge.conf`** (IPs, credentials, stream paths, snapshot interval):
      `
      systemctl restart mediamtx.service
