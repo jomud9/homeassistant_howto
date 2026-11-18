@@ -2,7 +2,7 @@
 
 This guide rebuilds the `s3w-onvif-bridge` Debian LXC container from scratch. All network, camera, stream, and snapshot settings are centralized in `/etc/onvif_bridge.conf`, and `/opt/mediamtx.yml` is auto-generated from that configuration whenever `mediamtx.service` starts.
 
-Although the Sonoff CAM-S3W advertises ONVIF and RTSP support, its non-standard ONVIF implementation—particularly around WS-Security digest authentication and SOAP schema quirks common on budget cameras—causes UniFi Protect to reject direct adoption with an "incorrect password" error. This proxy sits in the middle to pull the camera's working RTSP feeds directly and expose a clean, standards-compliant ONVIF endpoint with dual HQ/Low profiles and snapshots that UniFi Protect can adopt reliably.
+Although the Sonoff CAM-S3W advertises ONVIF and RTSP support, its non-standard ONVIF implementation—particularly around WS-Security digest authentication and SOAP schema quirks common on budget cameras—causes UniFi Protect to reject direct adoption with an "Invalid Credentials" error. This proxy sits in the middle to pull the camera's working RTSP feeds directly and expose a clean, standards-compliant ONVIF endpoint with dual HQ/Low profiles and snapshots that UniFi Protect can adopt reliably.
 
 Changlog 20261119 - Initial github version
 ---
@@ -438,3 +438,13 @@ systemctl enable --now mediamtx.service onvif-bridge.service
      `
      systemctl daemon-reload && systemctl restart mediamtx.service
      `
+---
+
+## 8. References
+[AI Port ONVIF troubleshooting](https://community.ui.com/questions/AI-Port-ONVIF-troubleshooting/4bf47d15-3f80-4b71-ae95-ad700b95fa2a): Packet and API traces revealed that UniFi Protect uses the Node.js agsh/onvif library. When Protect hits any SOAP/HTTP parsing error after authentication (400 Bad Request on /proxy/protect/api/third-party-cameras/adopt), the UI masks the error and displays "Invalid credentials" rather than the actual SOAP fault.
+
+[Adding Third-Party Camera "Invalid Credentials" Due to SOAP Error Response](https://community.ui.com/questions/Adding-Third-Party-Camera-Invalid-Credentials-Due-to-SOAP-Error-Response/7e09bc87-6ce9-4a5d-ae69-90b7c902afeb): Packet captures on port 8000 confirmed that WS-Security password digest authentication succeeded, but Protect immediately failed with "Invalid Credentials" when querying Media2 / stream profiles that returned a SOAP InvalidArgVal fault—and users noted that disabling strict "ONVIF Authentication" (WS-Security enforcement) on the camera resolved adoption.
+
+[Error in UniFi Protect adopting Amcrest camera — "Invalid credentials"](https://community.ui.com/questions/Error-in-Unifi-Protect-adopting-Amcrest-camera-greater-Invalid-credentials-Please-check-and-try-aga/c85fcbca-3c54-470f-ae6f-96747f9bb24b): Users repeatedly hit "Invalid credentials. Please check and try again." until toggling the camera's ONVIF Authentication setting off—bypassing the camera's non-standard WS-Security check while still authenticating the RTSP feed.
+
+[Older Hikvision ONVIF — incorrect password error](https://community.ui.com/questions/041f7bf1-b5b1-43ca-9267-0de4343a952b): Inspecting /srv/unifi-protect/logs/cameras.thirdParty.log confirmed that Protect throws an incorrect-password style failure when getOnvifDefaultCameraSettings() fails to parse non-standard videoEncoderConfiguration / resolution fields in the camera's SOAP response.
