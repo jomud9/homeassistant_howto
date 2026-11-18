@@ -4,6 +4,7 @@ This guide rebuilds the `s3w-onvif-bridge` Debian LXC container from scratch. Al
 
 Although the Sonoff CAM-S3W advertises ONVIF and RTSP support, its non-standard ONVIF implementation—particularly around WS-Security digest authentication and SOAP schema quirks common on budget cameras—causes UniFi Protect to reject direct adoption with an "incorrect password" error. This proxy sits in the middle to pull the camera's working RTSP feeds directly and expose a clean, standards-compliant ONVIF endpoint with dual HQ/Low profiles and snapshots that UniFi Protect can adopt reliably.
 
+Changlog 20261119 - Initial github version
 ---
 
 ## 1. Proxmox LXC Container Requirements
