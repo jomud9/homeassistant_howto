@@ -6,6 +6,21 @@ Although the Sonoff CAM-S3W advertises ONVIF and RTSP support, its non-standard 
 
 Changlog 20261119 - Initial github version
 ---
+## 0. Get a Sonoff S3W Camera, and set it up
+> This is how your nightmare start   :P
+
+Follow all instruction via your phone app. 
+
+1. Get it connected your wifi. Reserve that with a static IP address ( `10.15.30.241` for example )
+1. Go to Web admin page http://\<YOUR\_CAM\_IP\> ( `http://10.15.30.241` ) For your first login you need to assign your password for admin page access
+1. You have fun with all options, be my guest.
+1. Go `Device Settings` > `ONVIF/RTSP` > Switch to `ON`
+1. Assign `ONVIF/RTSP Username` (`sonoff`)
+1. Assign `ONVIF/RTSP Password` (`camfeed`)
+
+We will need these information on Step 4.
+
+---
 
 ## 1. Proxmox LXC Container Requirements
 
@@ -69,15 +84,15 @@ onvif_port = 8000
 rtsp_port = 8554
 
 [camera]
-ip = 10.15.30.241       # Your WebCam IP Address
+ip = 10.15.30.241        # Your WebCam IP Address
 rtsp_port = 554
 manufacturer = SONOFF
 model = CAM-S3W
 firmware = 1.0.0
 serial = S3W001
 hardware_id = 1.0
-username = <onvif_username>      
-password = <onvif_password>
+username = sonoff        # Your ONVIF/RTSP username
+password = camfeed		 # Your ONVIF/RTPS password
 
 [streams]
 main_path = sonoff
