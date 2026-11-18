@@ -12,7 +12,7 @@ A personal collection of setup notes, configuration snippets, and hardware worka
 
 | Guide | Description | Language |
 | :--- | :--- | :---: |
-| [**Sonoff CAM-S3W ONVIF Bridge for UniFi Protect**](https://github.com/jomud9/homeassistant_howto/blob/main/s3w-onvif-bridge_v1.md) | Deploy a lightweight Python + MediaMTX proxy on a Debian LXC container to expose dual HQ/Low streams and snapshots so UniFi Protect can adopt the Sonoff CAM-S3W. | English |
+| [**Sonoff CAM-S3W ONVIF Bridge for UniFi Protect**](https://github.com/jomud9/homeassistant_howto/blob/main/s3w-onvif-bridge.md) | Deploy a lightweight Python + MediaMTX proxy on a Debian LXC container to expose dual HQ/Low streams and snapshots so UniFi Protect can adopt the Sonoff CAM-S3W. | English |
 | [**Ubiquiti UniFi VLAN & Zone-Based Firewall Configuration**](https://github.com/jomud9/homeassistant_howto/blob/main/unifi_vlanzbf_config.md) | Step-by-step setup for IoT VLAN segmentation and Zone-Based Firewall (ZBF) rules on UniFi. | 廣東話 |
 
 ---
