@@ -4,9 +4,74 @@ This guide rebuilds the `s3w-onvif-bridge` Debian LXC container from scratch. Al
 
 Although the Sonoff CAM-S3W advertises ONVIF and RTSP support, its non-standard ONVIF implementation—particularly around WS-Security digest authentication and SOAP schema quirks common on budget cameras—causes UniFi Protect to reject direct adoption with an "Invalid Credentials" error. This proxy sits in the middle to pull the camera's working RTSP feeds directly and expose a clean, standards-compliant ONVIF endpoint with dual HQ/Low profiles and snapshots that UniFi Protect can adopt reliably.
 
+
 Changlog 20261119 - Initial github version
 
 ---
+---
+
+## Disclaimer
+
+> **Use at Your Own Risk:** I take no credit and/or responsibility for the code provided in this guide, as it was generated with the assistance of Google Gemini. However, I have personally tested and verified this exact setup on my own environment:
+> * **Hypervisor:** Proxmox VE 9.2.28
+> * **Guest OS:** Debian 13 (Trixie) LXC
+> * **NVR:** UniFi Protect v7.3.74
+> * **Camera:** Sonoff CAM-S3W (Firmware `1.2.1`)
+>
+> However feel free to ping me on GitHub if you run into questions or need help!
+
+---
+
+## Architecture & `/opt/onvif_bridge.py` Logic Overview
+
+```text
++---------------------------------------------------------------------------------------------------+
+|                                   s3w-obridge LXC (10.15.30.242)                                  |
+|                                                                                                   |
+|  +---------------------------+                                                                    |
+|  |  /etc/onvif_bridge.conf   |  (Single Source of Truth: IPs, Credentials, Streams, Snapshot)     |
+|  +-------------+-------------+                                                                    |
+|                |                                                                                  |
+|                +---> [1. Boot / ExecStartPre] (--generate-mediamtx)                               |
+|                |        Writes /opt/mediamtx.yml                                                  |
+|                |                   |                                                              |
+|                |                   v                                                              |
+|                |     +---------------------------+       TCP RTSP Pull       +-----------------+  |
+|                |     |     mediamtx.service      | <------------------------ |  Sonoff CAM-S3W |  |
+|                |     |       (Port 8554)         |  ch0 (2304x1296)          |  (10.15.30.241) |  |
+|                |     |                           |  ch1 (640x360)            |   (Port 554)    |  |
+|                |     +------+-------------+------+                           +-----------------+  |
+|                |            |             |                                                       |
+|                |            |             +--- Local RTSP (127.0.0.1:8554/sonoff_sub)             |
+|                |            |                  |                                                  |
+|                +---> [2. Runtime Daemon]       v                                                  |
+|                      +---------------------------------------+                                    |
+|                      |        onvif-bridge.service           |                                    |
+|                      |     (/opt/onvif_bridge.py :8000)      |                                    |
+|                      |                                       |                                    |
+|                      |  * Background Thread (every 30s)      |                                    |
+|                      |    ffmpeg -> /tmp/sonoff_snap.jpg     |                                    |
+|                      |                                       |                                    |
+|                      |  * HTTP/SOAP Handler (Port 8000)      |                                    |
+|                      |    - POST /onvif/* -> SOAP XML        |                                    |
+|                      |      (Profiles, Stream & Snap URIs)   |                                    |
+|                      |    - GET /snapshot.jpg -> Cached JPEG |                                    |
+|                      +-------------------+-------------------+                                    |
+|                                          |                                                        |
++------------------------------------------|--------------------------------------------------------+
+                                           |
+                       +-------------------+-------------------+
+                       |                                       |
+         ONVIF SOAP & JPEG (:8000)               RTSP Video Streams (:8554)
+                       |                                       |
+                       v                                       v
+           +-------------------------------------------------------+
+           |                     UniFi Protect                     |
+           |             (Adopts 10.15.30.242:8000)                |
+           +-------------------------------------------------------+
+```
+
+
 
 ## 0. Get a Sonoff S3W Camera, and set it up
 > This is how your nightmare start   :P
